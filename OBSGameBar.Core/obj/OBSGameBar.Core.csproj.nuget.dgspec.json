@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Core\\OBSGameBar.Core.csproj": {}
+    "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Core\\OBSGameBar.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Core\\OBSGameBar.Core.csproj": {
+    "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Core\\OBSGameBar.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Core\\OBSGameBar.Core.csproj",
+        "projectUniqueName": "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Core\\OBSGameBar.Core.csproj",
         "projectName": "OBSGameBar.Core",
-        "projectPath": "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Core\\OBSGameBar.Core.csproj",
+        "projectPath": "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Core\\OBSGameBar.Core.csproj",
         "packagesPath": "C:\\Users\\sayan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Core\\obj\\",
+        "outputPath": "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

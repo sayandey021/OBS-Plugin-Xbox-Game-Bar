@@ -2297,11 +2297,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Tests\\OBSGameBar.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Tests\\OBSGameBar.Tests.csproj",
       "projectName": "OBSGameBar.Tests",
-      "projectPath": "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Tests\\OBSGameBar.Tests.csproj",
+      "projectPath": "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Tests\\OBSGameBar.Tests.csproj",
       "packagesPath": "C:\\Users\\sayan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Tests\\obj\\",
+      "outputPath": "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2323,8 +2323,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Core\\OBSGameBar.Core.csproj": {
-              "projectPath": "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Core\\OBSGameBar.Core.csproj"
+            "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Core\\OBSGameBar.Core.csproj": {
+              "projectPath": "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Core\\OBSGameBar.Core.csproj"
             }
           }
         }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OBSGameBar.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8a6d4e16082e3c0b9459427f850aa8b55d17141")]
 [assembly: System.Reflection.AssemblyProductAttribute("OBSGameBar.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OBSGameBar.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

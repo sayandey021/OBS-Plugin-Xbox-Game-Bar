@@ -1,1 +1,1 @@
-C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\OBSGameBar.csproj;x64
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\OBSGameBar.csproj;x64

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "izrYTIwKOCU=",
+  "dgSpecHash": "acalm6DNthU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Tests\\OBSGameBar.Tests.csproj",
+  "projectFilePath": "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Tests\\OBSGameBar.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sayan\\.nuget\\packages\\microsoft.applicationinsights\\2.23.0\\microsoft.applicationinsights.2.23.0.nupkg.sha512",
     "C:\\Users\\sayan\\.nuget\\packages\\microsoft.codecoverage\\18.0.1\\microsoft.codecoverage.18.0.1.nupkg.sha512",

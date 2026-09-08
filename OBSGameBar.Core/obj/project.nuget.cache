@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hcIVlStI3rk=",
+  "dgSpecHash": "1eSGd9c7gPo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sayan\\Documents\\GitHub\\obs plugin\\OBSGameBar.Core\\OBSGameBar.Core.csproj",
+  "projectFilePath": "C:\\Users\\sayan\\Documents\\GitHub\\OBS-Plugin-Xbox-Game-Bar\\OBSGameBar.Core\\OBSGameBar.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sayan\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\sayan\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

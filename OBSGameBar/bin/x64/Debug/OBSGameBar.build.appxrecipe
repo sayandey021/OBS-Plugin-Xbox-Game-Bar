@@ -10,22 +10,22 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>a84d436e-213c-41c3-8f06-4b216954203e</PackageIdentityName>
     <PackageIdentityPublisher>CN=OBSGameBarWidget</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\bin\x64\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\bin\x64\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\bin\x64\Debug\OBSGameBar.exe">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\bin\x64\Debug\OBSGameBar.exe">
       <PackagePath>entrypoint\OBSGameBar.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\sayan\.nuget\packages\microsoft.bcl.asyncinterfaces\8.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
@@ -46,7 +46,7 @@
     <AppxPackagedFile Include="C:\Users\sayan\.nuget\packages\system.text.json\8.0.5\lib\netstandard2.0\System.Text.Json.dll">
       <PackagePath>System.Text.Json.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\bin\Debug\netstandard2.0\OBSGameBar.Core.dll">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\bin\Debug\netstandard2.0\OBSGameBar.Core.dll">
       <PackagePath>OBSGameBar.Core.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\sayan\.nuget\packages\microsoft.gaming.xboxgamebar\5.3.200605002\lib\uap10.0\Microsoft.Gaming.XboxGameBar.Authentication.winmd">
@@ -61,45 +61,45 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.22621.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\Assets\SplashScreen.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\Assets\Square150x150Logo.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\Assets\Square150x150Logo.png">
       <PackagePath>Assets\Square150x150Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\Assets\Square44x44Logo.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\Assets\Square44x44Logo.png">
       <PackagePath>Assets\Square44x44Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\Assets\Wide310x150Logo.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\Assets\Wide310x150Logo.png">
       <PackagePath>Assets\Wide310x150Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\GameBar\Icons\icon.targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\GameBar\Icons\icon.targetsize-16.png">
       <PackagePath>GameBar\Icons\icon.targetsize-16.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\GameBar\Icons\icon.targetsize-20.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\GameBar\Icons\icon.targetsize-20.png">
       <PackagePath>GameBar\Icons\icon.targetsize-20.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\GameBar\Icons\icon.targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\GameBar\Icons\icon.targetsize-24.png">
       <PackagePath>GameBar\Icons\icon.targetsize-24.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\GameBar\Icons\icon.targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\GameBar\Icons\icon.targetsize-256.png">
       <PackagePath>GameBar\Icons\icon.targetsize-256.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\GameBar\Icons\icon.targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\GameBar\Icons\icon.targetsize-32.png">
       <PackagePath>GameBar\Icons\icon.targetsize-32.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\GameBar\Icons\icon.targetsize-44.png">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\GameBar\Icons\icon.targetsize-44.png">
       <PackagePath>GameBar\Icons\icon.targetsize-44.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\bin\x64\Debug\OBSGameBar.xr.xml">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\bin\x64\Debug\OBSGameBar.xr.xml">
       <PackagePath>OBSGameBar.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.22621.0\\redist\Debug\X64\ucrtbased.dll">
@@ -111,10 +111,10 @@
     <AppxPackagedFile Include="C:\Users\sayan\.nuget\packages\microsoft.gaming.xboxgamebar\5.3.200605002\buildTransitive\..\private\Microsoft.Gaming.XboxGameBar.Private.winmd">
       <PackagePath>Microsoft.Gaming.XboxGameBar.Private.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\bin\x64\Debug\Core\OBSGameBar.exe">
+    <AppxPackagedFile Include="C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar\bin\x64\Debug\Core\OBSGameBar.exe">
       <PackagePath>OBSGameBar.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = OBSGameBar.Core
-build_property.ProjectDir = C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\
+build_property.ProjectDir = C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false

@@ -284,12 +284,14 @@
                             <Button Style="{StaticResource HeaderIconButtonStyle}"
                                     Command="{x:Bind ViewModel.ToggleStudioModeCommand}"
                                     Padding="6,2" Height="Auto" Width="Auto"
+                                    VerticalContentAlignment="Center"
                                     ToolTipService.ToolTip="Toggle Studio Mode (Preview / Program)">
                                 <Border CornerRadius="4" Padding="6,2"
                                         Background="{x:Bind ViewModel.State.IsStudioMode, Mode=OneWay, Converter={StaticResource StudioModeBadgeBgConverter}}">
                                     <TextBlock Text="{x:Bind ViewModel.StudioModeBadgeText, Mode=OneWay}"
                                                FontSize="10" FontWeight="SemiBold"
-                                               Foreground="{x:Bind ViewModel.State.IsStudioMode, Mode=OneWay, Converter={StaticResource StudioModeBadgeFgConverter}}" />
+                                               Foreground="{x:Bind ViewModel.State.IsStudioMode, Mode=OneWay, Converter={StaticResource StudioModeBadgeFgConverter}}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </Button>
                         </StackPanel>
@@ -356,19 +358,21 @@
                                             BorderBrush="{x:Bind SceneState, Mode=OneWay, Converter={StaticResource ScenePillBorderConverter}}"
                                             BorderThickness="1"
                                             Padding="10,5"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
                                             Click="OnSceneButtonClicked">
-                                        <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                             <TextBlock Text="{x:Bind Name}" FontSize="12" VerticalAlignment="Center" />
                                             <Border Visibility="{x:Bind ShowLiveBadge, Mode=OneWay, Converter={StaticResource BoolToVisConverter}}"
                                                     Background="#C42B1C"
-                                                    CornerRadius="3" Padding="4,1" VerticalAlignment="Center">
+                                                    CornerRadius="3" Padding="4,1" Margin="5,0,0,0" VerticalAlignment="Center">
                                                 <TextBlock Text="LIVE"
                                                            FontSize="8" FontWeight="Bold"
                                                            Foreground="#FFFFFFFF" />
                                             </Border>
                                             <Border Visibility="{x:Bind ShowPreviewBadge, Mode=OneWay, Converter={StaticResource BoolToVisConverter}}"
                                                     Background="#0078D4"
-                                                    CornerRadius="3" Padding="4,1" VerticalAlignment="Center">
+                                                    CornerRadius="3" Padding="4,1" Margin="5,0,0,0" VerticalAlignment="Center">
                                                 <TextBlock Text="PREVIEW"
                                                            FontSize="8" FontWeight="Bold"
                                                            Foreground="#FFFFFFFF" />
@@ -389,11 +393,14 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="models:SourceModel">
                                     <Grid Padding="6,4">
-                                        <CheckBox Content="{x:Bind SourceName}"
-                                                  IsChecked="{x:Bind IsEnabled, Mode=OneWay}"
-                                                  FontSize="12"
-                                                  Foreground="{StaticResource PrimaryTextBrush}"
-                                                  Click="OnSourceToggled" />
+                                        <CheckBox IsChecked="{x:Bind IsEnabled, Mode=OneWay}"
+                                                  VerticalContentAlignment="Center"
+                                                  Click="OnSourceToggled">
+                                            <TextBlock Text="{x:Bind SourceName}"
+                                                       FontSize="12"
+                                                       Foreground="{StaticResource PrimaryTextBrush}"
+                                                       Margin="0,-2,0,0" />
+                                        </CheckBox>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

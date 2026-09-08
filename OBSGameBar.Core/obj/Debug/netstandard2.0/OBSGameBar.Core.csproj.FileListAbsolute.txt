@@ -8,3 +8,14 @@ c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard
 c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.csproj.CoreCompileInputs.cache
 c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.dll
 c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.pdb
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\bin\Debug\netstandard2.0\OBSGameBar.Core.deps.json
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\bin\Debug\netstandard2.0\OBSGameBar.Core.dll
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\bin\Debug\netstandard2.0\OBSGameBar.Core.pdb
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.csproj.AssemblyReference.cache
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.AssemblyInfoInputs.cache
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.AssemblyInfo.cs
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.csproj.CoreCompileInputs.cache
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.sourcelink.json
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.dll
+C:\Users\sayan\Documents\GitHub\OBS-Plugin-Xbox-Game-Bar\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.pdb
