@@ -1,0 +1,585 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="OBSGameBar.Views.MainWidgetView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:OBSGameBar.Core.Models"
+    xmlns:vm="using:OBSGameBar.Core.ViewModels"
+    xmlns:converters="using:OBSGameBar.Views.Converters"
+    mc:Ignorable="d"
+    Background="{StaticResource AppBackgroundBrush}">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <!-- Direct converter definitions for instantaneous local lookup in x:Bind -->
+            <converters:BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+            <converters:BooleanToVisibilityConverter x:Key="InverseBoolToVisConverter" Inverse="True" />
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+            <converters:ConnectionStatusToBrushConverter x:Key="StatusToBrushConverter" />
+            <converters:DbToSliderConverter x:Key="DbToSliderConverter" />
+            <converters:ActivePillBackgroundConverter x:Key="ActivePillBackgroundConverter" />
+            <converters:ActivePillForegroundConverter x:Key="ActivePillForegroundConverter" />
+            <converters:ActivePillBorderConverter x:Key="ActivePillBorderConverter" />
+            <converters:ScenePillBackgroundConverter x:Key="ScenePillBackgroundConverter" />
+            <converters:ScenePillForegroundConverter x:Key="ScenePillForegroundConverter" />
+            <converters:ScenePillBorderConverter x:Key="ScenePillBorderConverter" />
+            <converters:SceneBadgeBackgroundConverter x:Key="SceneBadgeBackgroundConverter" />
+            <converters:StudioModeBadgeBgConverter x:Key="StudioModeBadgeBgConverter" />
+            <converters:StudioModeBadgeFgConverter x:Key="StudioModeBadgeFgConverter" />
+            <converters:QuickActionRowConverter x:Key="QuickActionRowConverter" />
+            <converters:QuickActionColumnConverter x:Key="QuickActionColumnConverter" />
+            <converters:MutedToBrushConverter x:Key="MutedToBrushConverter" />
+            <converters:MutedToOpacityConverter x:Key="MutedToOpacityConverter" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Themes/FluentResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:ConnectionId='2' x:Name="RootGrid">
+        <!-- Disconnected Overlay / Banner (shown when not connected) -->
+        <Grid x:ConnectionId='3'                                                                                                                     >
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" MaxWidth="320" Margin="20">
+                <TextBlock Text="&#xEA39;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="36" Foreground="{StaticResource SecondaryTextBrush}" HorizontalAlignment="Center" />
+                <TextBlock Text="OBS Studio isn't connected" FontWeight="SemiBold" FontSize="15" HorizontalAlignment="Center" Foreground="{StaticResource PrimaryTextBrush}" />
+                <TextBlock Text="Make sure OBS Studio is running and WebSocket Server is enabled (Tools → WebSocket Server Settings)."
+                           TextWrapping="Wrap" TextAlignment="Center" FontSize="12" Foreground="{StaticResource SecondaryTextBrush}" />
+                
+                <TextBlock x:ConnectionId='63'                                                           
+                           TextWrapping="Wrap" TextAlignment="Center" FontSize="11" Foreground="{StaticResource WarningBrush}"
+                                                                                                                                                        />
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10" Margin="0,8,0,0">
+                    <Button x:ConnectionId='64' Style="{StaticResource PrimaryButtonStyle}"                                                 >
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <TextBlock Text="&#xE72C;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="12" VerticalAlignment="Center" />
+                            <TextBlock Text="Retry Connection" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:ConnectionId='65' Style="{StaticResource SecondaryButtonStyle}"                                                 >
+                        <TextBlock Text="Settings" />
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Connected Dashboard (starts immediately at top, matching stock Game Bar widgets) -->
+        <ScrollViewer x:ConnectionId='4' VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                                                                                                                                   >
+            <StackPanel Padding="14,10,14,16" Spacing="12">
+
+                <!-- 1 & 2. Stream & Recording Dashboard Card -->
+                <Border Style="{StaticResource CardBorderStyle}">
+                    <!-- Single shared-column Grid — guarantees identical left edge for both buttons -->
+                    <Grid RowSpacing="12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="126" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- ═══ Stream Row ═══ -->
+                        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Spacing="3">
+                            <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                                <!-- Inactive Stream Label -->
+                                <TextBlock x:ConnectionId='59' Text="Stream" FontWeight="SemiBold" FontSize="12" Foreground="{StaticResource PrimaryTextBrush}"
+                                                                                                                                                               
+                                           VerticalAlignment="Center" />
+                                <TextBlock x:ConnectionId='60' Text="Offline" FontSize="11" Foreground="{StaticResource MutedTextBrush}"
+                                                                                                                                                               
+                                           VerticalAlignment="Center" />
+
+                                <!-- Active Live Badge -->
+                                <Border x:ConnectionId='61' Background="{StaticResource DangerBrush}" CornerRadius="10" Padding="8,1"
+                                                                                                                                                     >
+                                    <TextBlock Text="LIVE" FontWeight="Bold" FontSize="10" Foreground="White" />
+                                </Border>
+                                <TextBlock x:ConnectionId='62'                                                            
+                                           FontWeight="SemiBold" FontSize="12" Foreground="{StaticResource PrimaryTextBrush}"
+                                                                                                                                                        
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+
+                            <!-- Active Stream Stats -->
+                            <StackPanel x:ConnectionId='56' Orientation="Horizontal" Spacing="6"                                                                                                              >
+                                <TextBlock x:ConnectionId='57'                                                                   FontSize="11" Foreground="{StaticResource SecondaryTextBrush}" />
+                                <TextBlock Text="•" FontSize="11" Foreground="{StaticResource MutedTextBrush}" />
+                                <TextBlock x:ConnectionId='58'                                                                                FontSize="11" Foreground="{StaticResource SecondaryTextBrush}" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Stream Button — col 1, row 0 -->
+                        <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                            <!-- Idle -->
+                            <Button x:ConnectionId='54' Style="{StaticResource SecondaryButtonStyle}"
+                                                                                    
+                                    Width="126" Height="32" Padding="0"
+                                    HorizontalAlignment="Stretch"
+                                                                                                                                                        >
+                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="18" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#xE714;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Text="Start Stream" FontSize="12" Margin="6,0,0,0" VerticalAlignment="Center" />
+                                </Grid>
+                            </Button>
+                            <!-- Active -->
+                            <Button x:ConnectionId='55' Style="{StaticResource DangerButtonStyle}"
+                                                                                    
+                                    Width="126" Height="32" Padding="0"
+                                    HorizontalAlignment="Stretch"
+                                                                                                                                                 >
+                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="18" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#xE71A;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Text="Stop Stream" FontSize="12" Margin="6,0,0,0" VerticalAlignment="Center" />
+                                </Grid>
+                            </Button>
+                        </Grid>
+
+                        <!-- ═══ Recording Row ═══ -->
+                        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Spacing="3">
+                            <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                                <!-- Inactive Rec Label -->
+                                <TextBlock x:ConnectionId='49' Text="Recording" FontWeight="SemiBold" FontSize="12" Foreground="{StaticResource PrimaryTextBrush}"
+                                                                                                                                                               
+                                           VerticalAlignment="Center" />
+                                <TextBlock x:ConnectionId='50' Text="Ready" FontSize="11" Foreground="{StaticResource MutedTextBrush}"
+                                                                                                                                                               
+                                           VerticalAlignment="Center" />
+
+                                <!-- Active Rec Badge -->
+                                <Border x:ConnectionId='51' Background="{StaticResource DangerBrush}" CornerRadius="10" Padding="8,1"
+                                                                                                                                                     >
+                                    <TextBlock Text="REC" FontWeight="Bold" FontSize="10" Foreground="White" />
+                                </Border>
+                                <TextBlock x:ConnectionId='52'                                                               
+                                           FontWeight="SemiBold" FontSize="12" Foreground="{StaticResource PrimaryTextBrush}"
+                                                                                                                                                        
+                                           VerticalAlignment="Center" />
+                                <TextBlock x:ConnectionId='53' Text="PAUSED" FontWeight="SemiBold" FontSize="10" Foreground="{StaticResource WarningBrush}"
+                                                                                                                                                              
+                                           VerticalAlignment="Center" Margin="2,0,0,0" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Recording Buttons — col 1, row 1 -->
+                        <!-- Use a fixed-width container so pause+stop together don't shift the stop button's left edge -->
+                        <Grid Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                            <!-- Idle: Start Record -->
+                            <Button x:ConnectionId='45' Style="{StaticResource SecondaryButtonStyle}"
+                                                                                    
+                                    Width="126" Height="32" Padding="0"
+                                    HorizontalAlignment="Right"
+                                                                                                                                                        >
+                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="18" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#xE7C8;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Text="Start Record" FontSize="12" Margin="6,0,0,0" VerticalAlignment="Center" />
+                                </Grid>
+                            </Button>
+
+                            <!-- Active: Pause + Stop (row of two) -->
+                            <StackPanel x:ConnectionId='46' Orientation="Horizontal" Spacing="6" HorizontalAlignment="Right"
+                                                                                                                                                     >
+                                <Button x:ConnectionId='47' Style="{StaticResource SecondaryButtonStyle}"
+                                                                                             
+                                        Width="32" Height="32" Padding="0"
+                                        ToolTipService.ToolTip="Pause / Resume Recording">
+                                    <TextBlock Text="&#xE769;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Button>
+                                <Button x:ConnectionId='48' Style="{StaticResource DangerButtonStyle}"
+                                                                                        
+                                        Width="126" Height="32" Padding="0">
+                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="18" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="&#xE71A;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock Grid.Column="1" Text="Stop Record" FontSize="12" Margin="6,0,0,0" VerticalAlignment="Center" />
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+
+                    </Grid>
+                </Border>
+
+                <!-- 3. Replay Buffer Card -->
+                <Border Style="{StaticResource CardBorderStyle}">
+                    <Grid RowSpacing="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                                <TextBlock Text="Replay buffer" FontWeight="SemiBold" FontSize="12" Foreground="{StaticResource PrimaryTextBrush}" />
+                                <Ellipse x:ConnectionId='42' Width="6" Height="6"                                                                                                                      VerticalAlignment="Center" />
+                                <TextBlock x:ConnectionId='43' Text="Active" FontSize="11" Foreground="{StaticResource SuccessBrush}" FontWeight="SemiBold"
+                                                                                                                                                                  VerticalAlignment="Center" />
+                                <TextBlock x:ConnectionId='44' Text="Ready" FontSize="11" Foreground="{StaticResource MutedTextBrush}"
+                                                                                                                                                                         VerticalAlignment="Center" />
+                            </StackPanel>
+
+                            <Button x:ConnectionId='41' Grid.Column="1"
+                                    Style="{StaticResource SecondaryButtonStyle}"
+                                                                                          
+                                    Width="120" Padding="10,6" HorizontalAlignment="Right" FontSize="11">
+                                <TextBlock FontSize="11" Text="Toggle buffer" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Button>
+                        </Grid>
+
+                        <!-- Prominent Fluent Save Replay Button -->
+                        <Button x:ConnectionId='40' Grid.Row="1"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                                                              
+                                HorizontalAlignment="Stretch"
+                                Padding="12,7">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="&#xE777;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="13" Foreground="{StaticResource AccentBrush}" VerticalAlignment="Center" Margin="0,0,8,0" />
+                                <TextBlock Grid.Column="1" Text="Save Replay" FontWeight="SemiBold" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="2" Text="60s" FontSize="11" Foreground="{StaticResource SecondaryTextBrush}" VerticalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <!-- 4. Scene Switcher Section (Win11 Segmented Pills with Studio Mode & Transition support) -->
+                <StackPanel Spacing="6">
+                    <Grid Margin="0,4,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                            <TextBlock Text="Scenes" Style="{StaticResource SectionHeaderStyle}" Margin="0" VerticalAlignment="Center" />
+                            <Button x:ConnectionId='37' Style="{StaticResource HeaderIconButtonStyle}"
+                                                                                        
+                                    Padding="6,2" Height="Auto" Width="Auto"
+                                    ToolTipService.ToolTip="Toggle Studio Mode (Preview / Program)">
+                                <Border x:ConnectionId='38' CornerRadius="4" Padding="6,2"
+                                                                                                                                                              >
+                                    <TextBlock x:ConnectionId='39'                                                           
+                                               FontSize="10" FontWeight="SemiBold"
+                                                                                                                                                                      />
+                                </Border>
+                            </Button>
+                        </StackPanel>
+
+                        <!-- Transition Button right in the Scenes header when Studio Mode is active -->
+                        <Button x:ConnectionId='36' Grid.Column="1"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                                                                     
+                                                                                                                                              
+                                Padding="10,3" Height="26" FontSize="11"
+                                ToolTipService.ToolTip="Transition Preview scene to Program (Live)">
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <TextBlock Text="&#xE8AB;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="11" Foreground="{StaticResource AccentBrush}" VerticalAlignment="Center" />
+                                <TextBlock Text="Transition" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+
+                    <!-- Studio Mode Active Subheader Banner: PREVIEW Scene ➔ LIVE Scene -->
+                    <Border x:ConnectionId='27'                                                                                                               
+                            Background="#181A1D" BorderBrush="#2D3139" BorderThickness="1" CornerRadius="4" Padding="8,4" Margin="0,0,0,2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="5" VerticalAlignment="Center">
+                                <Border Background="#0078D4" CornerRadius="2" Padding="4,1" VerticalAlignment="Center">
+                                    <TextBlock Text="PREVIEW" FontSize="8" FontWeight="Bold" Foreground="#FFFFFFFF" />
+                                </Border>
+                                <TextBlock x:ConnectionId='35'                                                                 
+                                           FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource AccentBrush}"
+                                           TextTrimming="CharacterEllipsis" MaxWidth="110" VerticalAlignment="Center" />
+                            </StackPanel>
+
+                            <TextBlock Grid.Column="1" Text="➔" FontSize="11" Foreground="{StaticResource SecondaryTextBrush}"
+                                       VerticalAlignment="Center" Margin="6,0" />
+
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="5" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Border Background="#C42B1C" CornerRadius="2" Padding="4,1" VerticalAlignment="Center">
+                                    <TextBlock Text="LIVE" FontSize="8" FontWeight="Bold" Foreground="#FFFFFFFF" />
+                                </Border>
+                                <TextBlock x:ConnectionId='34'                                                                 
+                                           FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource PrimaryTextBrush}"
+                                           TextTrimming="CharacterEllipsis" MaxWidth="110" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <ItemsControl x:ConnectionId='28'                                                           >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" Spacing="6" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate                               >
+                                    <Button x:ConnectionId='30' Style="{StaticResource PillButtonStyle}"
+                                                                                                                                                  
+                                                                                                                                                  
+                                                                                                                                               
+                                            BorderThickness="1"
+                                            Padding="10,5"
+                                                                        >
+                                        <StackPanel Orientation="Horizontal" Spacing="5" VerticalAlignment="Center">
+                                            <TextBlock x:ConnectionId='31'                      FontSize="12" VerticalAlignment="Center" Margin="0,1,0,0" />
+                                            <Border x:ConnectionId='32'                                                                                                
+                                                    Background="#C42B1C"
+                                                    CornerRadius="3" Padding="4,1" VerticalAlignment="Center">
+                                                <TextBlock Text="LIVE"
+                                                           FontSize="8" FontWeight="Bold"
+                                                           Foreground="#FFFFFFFF" Margin="0,1,0,0" />
+                                            </Border>
+                                            <Border x:ConnectionId='33'                                                                                                   
+                                                    Background="#0078D4"
+                                                    CornerRadius="3" Padding="4,1" VerticalAlignment="Center">
+                                                <TextBlock Text="PREVIEW"
+                                                           FontSize="8" FontWeight="Bold"
+                                                           Foreground="#FFFFFFFF" Margin="0,1,0,0" />
+                                            </Border>
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </StackPanel>
+
+                <!-- 5. Current Scene Sources Section -->
+                <StackPanel Spacing="4">
+                    <TextBlock x:ConnectionId='21'                                                                 Style="{StaticResource SectionHeaderStyle}" />
+                    <Border Style="{StaticResource CardBorderStyle}" Padding="8,4">
+                        <ItemsControl x:ConnectionId='22'                                                                        >
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate                                >
+                                    <Grid x:ConnectionId='24' Padding="6,4">
+                                        <CheckBox x:ConnectionId='25'                                            
+                                                  VerticalContentAlignment="Center"
+                                                                         >
+                                            <TextBlock x:ConnectionId='26'                            
+                                                       FontSize="12" 
+                                                       Foreground="{StaticResource PrimaryTextBrush}" 
+                                                       Margin="0,1,0,0" 
+                                                       VerticalAlignment="Center"/>
+                                        </CheckBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </StackPanel>
+
+                <!-- 6. Audio Mixer Section (Unified Card Container matching stock Volume Mixer) -->
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Audio mixer" Style="{StaticResource SectionHeaderStyle}" />
+                    <Border Style="{StaticResource CardBorderStyle}" Padding="12,6">
+                        <ItemsControl x:ConnectionId='13'                                                              >
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate                                    >
+                                    <Grid x:ConnectionId='15' Padding="0,6" RowSpacing="3">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Mute / Unmute Button (Left Icon) -->
+                                        <Button x:ConnectionId='16' Grid.Row="0" Grid.Column="0"
+                                                Style="{StaticResource HeaderIconButtonStyle}"
+                                                                                    
+                                                Width="24" Height="24" Padding="0" Margin="0,0,8,0"
+                                                ToolTipService.ToolTip="Mute / Unmute">
+                                            <TextBlock x:ConnectionId='20'                                           
+                                                       FontFamily="{StaticResource FluentIconFontFamily}"
+                                                       FontSize="13"
+                                                                                                                                                    />
+                                        </Button>
+
+                                        <!-- Source Name -->
+                                        <TextBlock x:ConnectionId='17' Grid.Row="0" Grid.Column="1"
+                                                                            
+                                                   FontWeight="SemiBold"
+                                                   FontSize="12"
+                                                   Foreground="{StaticResource PrimaryTextBrush}"
+                                                   VerticalAlignment="Center" />
+
+                                        <!-- dB Display String -->
+                                        <TextBlock x:ConnectionId='18' Grid.Row="0" Grid.Column="2"
+                                                                                                   
+                                                   FontSize="11"
+                                                   Foreground="{StaticResource SecondaryTextBrush}"
+                                                                                                                                              
+                                                   VerticalAlignment="Center" />
+
+                                        <!-- Stock 4px Windows 11 Slider -->
+                                        <Slider x:ConnectionId='19' Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                                                Minimum="0" Maximum="100"
+                                                                                                                                           
+                                                                                                                                      
+                                                Margin="0,2,0,0" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </StackPanel>
+
+
+                <!-- 9. Quick Actions Grid (2-Column Fluent Grid) -->
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Quick actions" Style="{StaticResource SectionHeaderStyle}" />
+                    <Grid ColumnSpacing="6" RowSpacing="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Slot 0: Toggle Stream -->
+                        <Button x:ConnectionId='5' Grid.Row="0" Grid.Column="0"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                HorizontalAlignment="Stretch"
+                                Padding="8,8"
+                                                                                >
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE714;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="13" VerticalAlignment="Center" />
+                                <TextBlock Text="Toggle Stream" FontSize="11" FontWeight="Normal" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Slot 1: Toggle Record -->
+                        <Button x:ConnectionId='6' Grid.Row="0" Grid.Column="1"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                HorizontalAlignment="Stretch"
+                                Padding="8,8"
+                                                                                >
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE7C8;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="13" VerticalAlignment="Center" />
+                                <TextBlock Text="Toggle Record" FontSize="11" FontWeight="Normal" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Slot 2: Save Replay -->
+                        <Button x:ConnectionId='7' Grid.Row="1" Grid.Column="0"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                HorizontalAlignment="Stretch"
+                                Padding="8,8"
+                                                                              >
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE777;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="13" VerticalAlignment="Center" />
+                                <TextBlock Text="Save Replay" FontSize="11" FontWeight="Normal" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Slot 3: Replay Buffer -->
+                        <Button x:ConnectionId='8' Grid.Row="1" Grid.Column="1"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                HorizontalAlignment="Stretch"
+                                Padding="8,8"
+                                                                                      >
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE7A7;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="13" VerticalAlignment="Center" />
+                                <TextBlock Text="Replay Buffer" FontSize="11" FontWeight="Normal" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Slot 4: Toggle Mic -->
+                        <Button x:ConnectionId='9' Grid.Row="2" Grid.Column="0"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                HorizontalAlignment="Stretch"
+                                Padding="8,8"
+                                                                             >
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE720;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="13" VerticalAlignment="Center" />
+                                <TextBlock Text="Toggle Mic" FontSize="11" FontWeight="Normal" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Slot 5: Toggle Audio -->
+                        <Button x:ConnectionId='10' Grid.Row="2" Grid.Column="1"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                HorizontalAlignment="Stretch"
+                                Padding="8,8"
+                                                                                 >
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE767;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="13" VerticalAlignment="Center" />
+                                <TextBlock Text="Toggle Audio" FontSize="11" FontWeight="Normal" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Slot 6: Transition -->
+                        <Button x:ConnectionId='11' Grid.Row="3" Grid.Column="0"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                HorizontalAlignment="Stretch"
+                                Padding="8,8"
+                                                                                     >
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE72C;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="13" VerticalAlignment="Center" />
+                                <TextBlock Text="Transition" FontSize="11" FontWeight="Normal" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Slot 7: Virtual Cam -->
+                        <Button x:ConnectionId='12' Grid.Row="3" Grid.Column="1"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                HorizontalAlignment="Stretch"
+                                Padding="8,8"
+                                                                                    >
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE960;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="13" VerticalAlignment="Center" />
+                                <TextBlock Text="Virtual Cam" FontSize="11" FontWeight="Normal" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
+

@@ -1,0 +1,10 @@
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\bin\Debug\netstandard2.0\OBSGameBar.Core.deps.json
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\bin\Debug\netstandard2.0\OBSGameBar.Core.dll
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\bin\Debug\netstandard2.0\OBSGameBar.Core.pdb
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.csproj.AssemblyReference.cache
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.AssemblyInfoInputs.cache
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.AssemblyInfo.cs
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.csproj.CoreCompileInputs.cache
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.dll
+c:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar.Core\obj\Debug\netstandard2.0\OBSGameBar.Core.pdb

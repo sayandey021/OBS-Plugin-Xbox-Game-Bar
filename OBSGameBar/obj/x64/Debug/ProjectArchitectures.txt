@@ -1,0 +1,1 @@
+C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\OBSGameBar.csproj;x64

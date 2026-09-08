@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  IgnorableNamespaces="uap uap3 mp">
+
+  <Identity
+    Name="OBSGameBarWidget"
+    Publisher="CN=OBSGameBarWidget"
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="a84d436e-213c-41c3-8f06-4b216954203e" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>OBS Studio</DisplayName>
+    <PublisherDisplayName>Antigravity</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.19041.0" MaxVersionTested="10.0.22621.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="OBSGameBar.App">
+      <uap:VisualElements
+        DisplayName="OBS Studio"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
+        Description="Control OBS Studio live from Xbox Game Bar without alt-tabbing"
+        BackgroundColor="#121212">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#121212" />
+      </uap:VisualElements>
+      <Extensions>
+        <!-- Standard Xbox Game Bar OBS Control Widget -->
+        <uap3:Extension Category="windows.appExtension">
+          <uap3:AppExtension Name="microsoft.gameBarUIExtension"
+                             Id="OBSControlWidget"
+                             DisplayName="OBS Studio"
+                             Description="Control OBS Studio directly from Xbox Game Bar"
+                             PublicFolder="GameBar">
+            <uap3:Properties>
+              <GameBarWidget Type="Standard">
+                <HomeMenuVisible>true</HomeMenuVisible>
+                <PinningSupported>true</PinningSupported>
+                <SettingsSupported AppExtensionId="OBSControlSettings" />
+                <ActivateAfterInstall>true</ActivateAfterInstall>
+                <FavoriteAfterInstall>true</FavoriteAfterInstall>
+                <Window>
+                  <Size>
+                    <Height>580</Height>
+                    <Width>380</Width>
+                    <MinHeight>420</MinHeight>
+                    <MinWidth>320</MinWidth>
+                    <MaxHeight>950</MaxHeight>
+                    <MaxWidth>650</MaxWidth>
+                  </Size>
+                  <ResizeSupported>
+                    <Horizontal>true</Horizontal>
+                    <Vertical>true</Vertical>
+                  </ResizeSupported>
+                </Window>
+              </GameBarWidget>
+            </uap3:Properties>
+          </uap3:AppExtension>
+        </uap3:Extension>
+
+        <!-- Xbox Game Bar OBS Settings Widget -->
+        <uap3:Extension Category="windows.appExtension">
+          <uap3:AppExtension Name="microsoft.gameBarUIExtension"
+                             Id="OBSControlSettings"
+                             DisplayName="OBS Studio Settings"
+                             Description="Configure OBS Studio Game Bar connection"
+                             PublicFolder="GameBar">
+            <uap3:Properties>
+              <GameBarWidget Type="Settings">
+                <Window>
+                  <Size>
+                    <Height>440</Height>
+                    <Width>380</Width>
+                  </Size>
+                  <ResizeSupported>
+                    <Horizontal>false</Horizontal>
+                    <Vertical>true</Vertical>
+                  </ResizeSupported>
+                </Window>
+              </GameBarWidget>
+            </uap3:Properties>
+          </uap3:AppExtension>
+        </uap3:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="privateNetworkClientServer" />
+  </Capabilities>
+</Package>

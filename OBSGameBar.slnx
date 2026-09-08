@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="OBSGameBar.Core/OBSGameBar.Core.csproj" />
+  <Project Path="OBSGameBar.Tests/OBSGameBar.Tests.csproj" />
+</Solution>

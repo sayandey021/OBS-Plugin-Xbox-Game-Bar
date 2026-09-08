@@ -1,0 +1,515 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:OBSGameBar.Views.Converters">
+
+    <!-- Converters -->
+    <converters:BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+    <converters:BooleanToVisibilityConverter x:Key="InverseBoolToVisConverter" Inverse="True" />
+    <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+    <converters:ConnectionStatusToBrushConverter x:Key="StatusToBrushConverter" />
+    <converters:DbToSliderConverter x:Key="DbToSliderConverter" />
+    <converters:ActivePillBackgroundConverter x:Key="ActivePillBackgroundConverter" />
+    <converters:ActivePillForegroundConverter x:Key="ActivePillForegroundConverter" />
+    <converters:ActivePillBorderConverter x:Key="ActivePillBorderConverter" />
+    <converters:ScenePillBackgroundConverter x:Key="ScenePillBackgroundConverter" />
+    <converters:ScenePillForegroundConverter x:Key="ScenePillForegroundConverter" />
+    <converters:ScenePillBorderConverter x:Key="ScenePillBorderConverter" />
+    <converters:SceneBadgeBackgroundConverter x:Key="SceneBadgeBackgroundConverter" />
+    <converters:StudioModeBadgeBgConverter x:Key="StudioModeBadgeBgConverter" />
+    <converters:StudioModeBadgeFgConverter x:Key="StudioModeBadgeFgConverter" />
+    <converters:QuickActionRowConverter x:Key="QuickActionRowConverter" />
+    <converters:QuickActionColumnConverter x:Key="QuickActionColumnConverter" />
+    <converters:MutedToBrushConverter x:Key="MutedToBrushConverter" />
+    <converters:MutedToOpacityConverter x:Key="MutedToOpacityConverter" />
+
+    <!-- ==================================================================== -->
+    <!-- Windows 11 Fluent Dark Palette & Material (Xbox Game Bar standard)   -->
+    <!-- ==================================================================== -->
+
+    <!-- Windows 11 Acrylic Backdrop for Xbox Game Bar (Exact Stock Color #25282C) -->
+    <AcrylicBrush x:Key="AppAcrylicBrush"
+                  BackgroundSource="HostBackdrop"
+                  TintColor="#FF25282C"
+                  TintOpacity="0.85"
+                  FallbackColor="#FF25282C" />
+
+    <!-- Stock Game Bar Palette (#25282C background identical to Game Bar titlebar) -->
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="#FF25282C" />
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="#FF2B2E33" />
+    <SolidColorBrush x:Key="CardBackgroundHoverBrush" Color="#FF32363D" />
+    
+    <!-- Stock subtle 1px border -->
+    <SolidColorBrush x:Key="CardBorderBrush" Color="#FF353940" />
+    <SolidColorBrush x:Key="SubtleBorderBrush" Color="#FF30343A" />
+    <SolidColorBrush x:Key="DividerBrush" Color="#FF33373E" />
+
+    <SolidColorBrush x:Key="PrimaryTextBrush" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="SecondaryTextBrush" Color="#FFC5C8CD" />
+    <SolidColorBrush x:Key="MutedTextBrush" Color="#FF8E939B" />
+
+    <!-- Windows 11 Cyan Accent -->
+    <SolidColorBrush x:Key="AccentBrush" Color="#FF4CC2FF" />
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="#FF60CDFF" />
+    <SolidColorBrush x:Key="AccentPressedBrush" Color="#FF38A2DE" />
+    <SolidColorBrush x:Key="AccentTextBrush" Color="#FF99D6FF" />
+
+    <!-- Controls -->
+    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="#FF2E3238" />
+    <SolidColorBrush x:Key="ControlBackgroundHoverBrush" Color="#FF363B42" />
+    <SolidColorBrush x:Key="ControlBackgroundPressedBrush" Color="#FF272A2F" />
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#FF3D424A" />
+
+    <!-- Semantic Status Brushes -->
+    <SolidColorBrush x:Key="DangerBrush" Color="#FFC42B1C" />
+    <SolidColorBrush x:Key="DangerHoverBrush" Color="#FFD13438" />
+    <SolidColorBrush x:Key="DangerBadgeBrush" Color="#33C42B1C" />
+
+    <SolidColorBrush x:Key="SuccessBrush" Color="#FF6CCB5F" />
+    <SolidColorBrush x:Key="SuccessBadgeBrush" Color="#336CCB5F" />
+
+    <SolidColorBrush x:Key="WarningBrush" Color="#FFFCE100" />
+    <SolidColorBrush x:Key="WarningBadgeBrush" Color="#33FCE100" />
+
+    <!-- Fluent icon font (Win11 Segoe Fluent Icons with Win10 MDL2 fallback) -->
+    <FontFamily x:Key="FluentIconFontFamily">Segoe Fluent Icons, Segoe MDL2 Assets</FontFamily>
+
+    <!-- Section Header TextBlock Style: Windows 11 Sentence case, 13px SemiBold -->
+    <Style x:Key="SectionHeaderStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+        <Setter Property="CharacterSpacing" Value="0" />
+        <Setter Property="Margin" Value="2,12,0,6" />
+    </Style>
+
+    <!-- Win11 Elevated Card: 6px radius matching stock dropdowns/cards -->
+    <Style x:Key="CardBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource CardBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource CardBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="12" />
+    </Style>
+
+    <!-- Game Bar Header Icon Button (4px radius) -->
+    <Style x:Key="HeaderIconButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="6" />
+        <Setter Property="Width" Value="32" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+    </Style>
+
+    <!-- Win11 Pill Button Style (used for Scene tabs and Quick Toggles like [On] / [Mic on]) -->
+    <Style x:Key="PillButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Padding" Value="14,5" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Normal" />
+    </Style>
+
+    <!-- Win11 Primary Accent Button: 4px radius, subtle accent border & dark fill for clean Game Bar feel -->
+    <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Padding" Value="14,6" />
+        <Setter Property="CornerRadius" Value="4" />
+    </Style>
+
+    <!-- Win11 Secondary / Standard button: subtle dark fill with 1px stroke -->
+    <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Padding" Value="12,6" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <!-- Win11 Danger filled button: 4px radius (used when live/recording is ACTIVE) -->
+    <Style x:Key="DangerButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource DangerBrush}" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Padding" Value="12,6" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <!-- Stock Slider Track Colors: Unfilled #484B4E, Filled #4CC2FF -->
+    <SolidColorBrush x:Key="SliderTrackFill" Color="#FF484B4E" />
+    <SolidColorBrush x:Key="SliderTrackFillPointerOver" Color="#FF54575B" />
+    <SolidColorBrush x:Key="SliderTrackValueFill" Color="#FF4CC2FF" />
+    <SolidColorBrush x:Key="SliderTrackValueFillPointerOver" Color="#FF60CDFF" />
+    <SolidColorBrush x:Key="SliderThumbBackground" Color="#FF4CC2FF" />
+
+    <!-- ================= Implicit Win11 control styles ================= -->
+    <Style TargetType="Button">
+        <Setter Property="CornerRadius" Value="4" />
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+    </Style>
+
+    <Style TargetType="PasswordBox">
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}" />
+    </Style>
+
+    <Style TargetType="CheckBox">
+        <Setter Property="CornerRadius" Value="4" />
+    </Style>
+
+    <!-- Windows 11 Rounded ScrollBar — full ControlTemplate with all required named parts -->
+    <!-- Arrow/page RepeatButtons are transparent; Thumb is a rounded pill with hover-expand animation -->
+    <Style TargetType="ScrollBar">
+        <Setter Property="Width"      Value="12" />
+        <Setter Property="MinWidth"   Value="12" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollBar">
+                    <Grid x:Name="Root">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="Normal" To="PointerOver" GeneratedDuration="0:0:0.12" />
+                                    <VisualTransition From="PointerOver" To="Normal"  GeneratedDuration="0:0:0.18" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Target="ThumbPill.Opacity" Value="1" />
+                                        <Setter Target="ThumbPill.Width"   Value="6" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Target="ThumbPill.Opacity" Value="1" />
+                                        <Setter Target="ThumbPill.Width"   Value="6" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Target="Root.Opacity" Value="0" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <!-- HORIZONTAL layout (hidden — widget only scrolls vertically) -->
+                        <Grid x:Name="HorizontalRoot" Visibility="Collapsed" Height="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="0.00001*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="0.00001*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <RepeatButton x:Name="HorizontalSmallDecrease" Grid.Column="0" Opacity="0" Width="0" />
+                            <RepeatButton x:Name="HorizontalLargeDecrease" Grid.Column="1" Opacity="0" />
+                            <Thumb        x:Name="HorizontalThumb"          Grid.Column="2" Opacity="0" Width="0" />
+                            <RepeatButton x:Name="HorizontalLargeIncrease" Grid.Column="3" Opacity="0" />
+                            <RepeatButton x:Name="HorizontalSmallIncrease" Grid.Column="4" Opacity="0" Width="0" />
+                        </Grid>
+
+                        <!-- VERTICAL layout — the pill thumb -->
+                        <Grid x:Name="VerticalRoot" Visibility="Visible">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="0.00001*" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="0.00001*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <!-- Arrow buttons — zero-size, transparent -->
+                            <RepeatButton x:Name="VerticalSmallDecrease" Grid.Row="0" Opacity="0" Height="0" />
+                            <RepeatButton x:Name="VerticalLargeDecrease" Grid.Row="1" Opacity="0" />
+
+                            <!-- The draggable thumb with rounded pill visual -->
+                            <Thumb x:Name="VerticalThumb" Grid.Row="2" HorizontalAlignment="Center">
+                                <Thumb.Template>
+                                    <ControlTemplate TargetType="Thumb">
+                                        <Border x:Name="ThumbPill"
+                                                Width="3"
+                                                CornerRadius="3"
+                                                Background="#C5C8CD"
+                                                Opacity="0.45"
+                                                HorizontalAlignment="Center" />
+                                    </ControlTemplate>
+                                </Thumb.Template>
+                            </Thumb>
+
+                            <RepeatButton x:Name="VerticalLargeIncrease" Grid.Row="3" Opacity="0" />
+                            <RepeatButton x:Name="VerticalSmallIncrease" Grid.Row="4" Opacity="0" Height="0" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Windows 11 Fluent Slider Style matching Windows 11 Volume Mixers -->
+    <Style TargetType="Slider">
+        <Setter Property="Background" Value="{StaticResource ControlBorderBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Margin" Value="0,2,0,2" />
+        <Setter Property="IsThumbToolTipEnabled" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Slider">
+                    <Grid Margin="{TemplateBinding Padding}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="Normal" To="PointerOver">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="HorizontalThumb"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="PointerOver" To="Normal">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="HorizontalThumb"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0" Duration="0:0:0.18" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="Pressed" To="Normal">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="HorizontalThumb"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0" Duration="0:0:0.18" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HorizontalThumb"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HorizontalThumb"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HorizontalThumb"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HorizontalThumb"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid.Resources>
+                            <!-- Windows 11 Knob: circular halo + expanding blue dot on knob hover -->
+                            <Style TargetType="Thumb">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Thumb">
+                                            <Grid x:Name="ThumbRoot" Width="24" Height="24" Background="Transparent">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualStateGroup.Transitions>
+                                                            <VisualTransition From="Normal" To="PointerOver">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="HaloCircle"
+                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                     To="1" Duration="0:0:0.12" />
+                                                                    <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                     Storyboard.TargetProperty="ScaleX"
+                                                                                     To="1.35" Duration="0:0:0.12" />
+                                                                    <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                     Storyboard.TargetProperty="ScaleY"
+                                                                                     To="1.35" Duration="0:0:0.12" />
+                                                                </Storyboard>
+                                                            </VisualTransition>
+                                                            <VisualTransition From="PointerOver" To="Normal">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="HaloCircle"
+                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                     To="0" Duration="0:0:0.18" />
+                                                                    <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                     Storyboard.TargetProperty="ScaleX"
+                                                                                     To="1.0" Duration="0:0:0.18" />
+                                                                    <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                     Storyboard.TargetProperty="ScaleY"
+                                                                                     To="1.0" Duration="0:0:0.18" />
+                                                                </Storyboard>
+                                                            </VisualTransition>
+                                                            <VisualTransition From="Pressed" To="Normal">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="HaloCircle"
+                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                     To="0" Duration="0:0:0.18" />
+                                                                    <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                     Storyboard.TargetProperty="ScaleX"
+                                                                                     To="1.0" Duration="0:0:0.18" />
+                                                                    <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                     Storyboard.TargetProperty="ScaleY"
+                                                                                     To="1.0" Duration="0:0:0.18" />
+                                                                </Storyboard>
+                                                            </VisualTransition>
+                                                        </VisualStateGroup.Transitions>
+                                                        <VisualState x:Name="Normal">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="HaloCircle"
+                                                                                 Storyboard.TargetProperty="Opacity"
+                                                                                 To="0" Duration="0" />
+                                                                <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                 Storyboard.TargetProperty="ScaleX"
+                                                                                 To="1.0" Duration="0" />
+                                                                <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                 Storyboard.TargetProperty="ScaleY"
+                                                                                 To="1.0" Duration="0" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="PointerOver">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="HaloCircle"
+                                                                                 Storyboard.TargetProperty="Opacity"
+                                                                                 To="1" Duration="0" />
+                                                                <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                 Storyboard.TargetProperty="ScaleX"
+                                                                                 To="1.35" Duration="0" />
+                                                                <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                 Storyboard.TargetProperty="ScaleY"
+                                                                                 To="1.35" Duration="0" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Pressed">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="HaloCircle"
+                                                                                 Storyboard.TargetProperty="Opacity"
+                                                                                 To="1" Duration="0" />
+                                                                <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                 Storyboard.TargetProperty="ScaleX"
+                                                                                 To="1.35" Duration="0" />
+                                                                <DoubleAnimation Storyboard.TargetName="BlueScale"
+                                                                                 Storyboard.TargetProperty="ScaleY"
+                                                                                 To="1.35" Duration="0" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Disabled">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="ThumbRoot"
+                                                                                 Storyboard.TargetProperty="Opacity"
+                                                                                 To="0" Duration="0" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+
+                                                <!-- Outer circular halo matching Windows 11 hover circle (#454545) -->
+                                                <Ellipse x:Name="HaloCircle"
+                                                         Width="22" Height="22"
+                                                         Fill="#454545"
+                                                         Opacity="0"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center" />
+
+                                                <!-- Inner cyan blue circle (blue area expands on hover) -->
+                                                <Ellipse x:Name="BlueCircle"
+                                                         Width="9" Height="9"
+                                                         Fill="{StaticResource AccentBrush}"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         RenderTransformOrigin="0.5,0.5">
+                                                    <Ellipse.RenderTransform>
+                                                        <ScaleTransform x:Name="BlueScale" ScaleX="1.0" ScaleY="1.0" />
+                                                    </Ellipse.RenderTransform>
+                                                </Ellipse>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid x:Name="SliderContainer">
+                            <Grid x:Name="HorizontalTemplate" MinHeight="24">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Rectangle x:Name="HorizontalTrackRect"
+                                           Grid.ColumnSpan="3"
+                                           Fill="{TemplateBinding Background}"
+                                           Height="4"
+                                           RadiusX="2" RadiusY="2"
+                                           VerticalAlignment="Center" />
+                                <Rectangle x:Name="HorizontalDecreaseRect"
+                                           Fill="{TemplateBinding Foreground}"
+                                           Height="4"
+                                           Margin="0,0,-12,0"
+                                           RadiusX="2" RadiusY="2"
+                                           VerticalAlignment="Center" />
+                                <Thumb x:Name="HorizontalThumb"
+                                       Grid.Column="1"
+                                       Width="24" Height="24"
+                                       Opacity="0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ToggleSwitch">
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
+    </Style>
+
+    <!-- Windows 11 Rounded ScrollViewer Style -->
+    <Style TargetType="ScrollViewer">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+</ResourceDictionary>
+

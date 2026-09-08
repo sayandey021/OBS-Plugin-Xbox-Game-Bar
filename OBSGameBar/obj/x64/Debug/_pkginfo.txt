@@ -1,0 +1,1 @@
+C:\Users\sayan\Documents\GitHub\obs plugin\OBSGameBar\AppPackages\OBSGameBar_1.0.0.0_x64_Debug_Test\OBSGameBar_1.0.0.0_x64_Debug.msix
